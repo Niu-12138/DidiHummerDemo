@@ -1,0 +1,164 @@
+{
+  "name": "Hummer",
+  "version": "0.2.8",
+  "summary": "Hummer",
+  "description": "Hummer is a dynamic solution for client.",
+  "homepage": "https://github.com/didi/Hummer",
+  "license": {
+    "type": "Apache-2.0",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "ChasonTang": "tangjiacheng@didiglobal.com"
+  },
+  "source": {
+    "git": "https://github.com/didi/Hummer.git",
+    "tag": "0.2.8"
+  },
+  "prepare_command": "curl -o napi_ios.tar.gz -L https://github.com/OrangeLab/N-API/releases/download/2.1.1/napi_ios.tar.gz\ntar zxf napi_ios.tar.gz\nrm -f napi_ios.tar.gz",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "default_subspecs": "Core",
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES",
+    "WARNING_CFLAGS": [
+      "-Werror=undeclared-selector",
+      "-Werror=incomplete-implementation"
+    ]
+  },
+  "libraries": "c++",
+  "subspecs": [
+    {
+      "name": "N-API",
+      "pod_target_xcconfig": {
+        "HEADER_SEARCH_PATHS": "$(PODS_TARGET_SRCROOT)/include"
+      },
+      "preserve_paths": "include/napi/*.{h,def}",
+      "source_files": "iOS/Hummer/Classes/Engine/N-API/*.{h,m,mm}",
+      "private_header_files": [
+        "iOS/Hummer/Classes/Engine/N-API/HMNAPIDebuggerHelper.h",
+        "iOS/Hummer/Classes/Engine/N-API/HMJSExecutor+Private.h",
+        "iOS/Hummer/Classes/Engine/N-API/HMJS{Weak,Strong}Value.h",
+        "iOS/Hummer/Classes/Engine/N-API/HMJSValue.h"
+      ]
+    },
+    {
+      "name": "Hermes",
+      "dependencies": {
+        "Hummer/Core": [
+
+        ],
+        "Hummer/N-API": [
+
+        ],
+        "SocketRocket": [
+          "~> 0.1"
+        ]
+      },
+      "pod_target_xcconfig": {
+        "HEADER_SEARCH_PATHS": "$(PODS_TARGET_SRCROOT)/iOS",
+        "GCC_ENABLE_CPP_EXCEPTIONS": "NO",
+        "GCC_ENABLE_CPP_RTTI": "NO"
+      },
+      "vendored_libraries": "libhermes.a",
+      "libraries": "c++",
+      "frameworks": "CoreFoundation",
+      "source_files": "iOS/Hermes/*.{h,m,mm}",
+      "private_header_files": "iOS/Hermes/RCTMessageThread.h",
+      "preserve_paths": "iOS/jsinspector/InspectorInterfaces.h"
+    },
+    {
+      "name": "JavaScriptCore",
+      "dependencies": {
+        "Hummer/Core": [
+
+        ],
+        "Hummer/N-API": [
+
+        ]
+      },
+      "vendored_libraries": "libjsc.a",
+      "frameworks": "JavaScriptCore"
+    },
+    {
+      "name": "Core",
+      "source_files": "iOS/Hummer/Classes/**/*.{h,m,cpp}",
+      "exclude_files": [
+        "iOS/Hummer/Classes/Engine/N-API/*.{h,m,mm}",
+        "iOS/Hummer/Classes/Core/Manager/ImageLoader/Decoder/ConcreteCoder/Webp/HMWebpImageCoder.{h,m}",
+        "iOS/Hummer/Classes/Component/Views/Lottie/**/*.{h,m,Swift}"
+      ],
+      "resource_bundles": {
+        "Hummer": [
+          "iOS/Hummer/Assets/Assets.xcassets"
+        ]
+      },
+      "frameworks": "JavaScriptCore",
+      "dependencies": {
+        "SocketRocket": [
+          "~> 0.1"
+        ]
+      }
+    },
+    {
+      "name": "RN",
+      "dependencies": {
+        "yoga": [
+
+        ],
+        "Hummer/Core": [
+
+        ]
+      }
+    },
+    {
+      "name": "OSSYoga",
+      "dependencies": {
+        "Yoga": [
+          "~> 1.14"
+        ],
+        "Hummer/Core": [
+
+        ]
+      }
+    },
+    {
+      "name": "WebP",
+      "source_files": "iOS/Hummer/Classes/Core/Manager/ImageLoader/Decoder/ConcreteCoder/Webp/HMWebpImageCoder.{h,m}",
+      "dependencies": {
+        "libwebp": [
+          "~> 1.2.0"
+        ]
+      }
+    },
+    {
+      "name": "Lottie",
+      "source_files": "iOS/Hummer/Classes/Component/Views/Lottie/**/*.{h,m}",
+      "exclude_files": "iOS/Hummer/Classes/Component/Views/Lottie/Swift/*.{h,m,Swift}",
+      "dependencies": {
+        "lottie-ios": [
+          ">=2.5.3"
+        ],
+        "Hummer/Core": [
+
+        ],
+        "SSZipArchive": [
+
+        ]
+      }
+    },
+    {
+      "name": "LottieSwift",
+      "source_files": "iOS/Hummer/Classes/Component/Views/Lottie/Swift/*.{h,m,Swift}",
+      "dependencies": {
+        "lottie-ios": [
+          ">=4.0.0"
+        ],
+        "Hummer/Lottie": [
+
+        ]
+      }
+    }
+  ]
+}

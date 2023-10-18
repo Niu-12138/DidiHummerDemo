@@ -1,0 +1,39 @@
+PODS:
+  - Alamofire (5.7.1)
+  - Hummer/Core (0.2.8):
+    - SocketRocket (~> 0.1)
+  - Hummer/OSSYoga (0.2.8):
+    - Hummer/Core
+    - Yoga (~> 1.14)
+  - SocketRocket (0.7.0)
+  - Yoga (1.14.0)
+
+DEPENDENCIES:
+  - Alamofire (= 5.7.1)
+  - "Hummer/OSSYoga (from `git@github.com:didi/Hummer.git`, branch `master`)"
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - SocketRocket
+    - Yoga
+
+EXTERNAL SOURCES:
+  Hummer:
+    :branch: master
+    :git: "git@github.com:didi/Hummer.git"
+
+CHECKOUT OPTIONS:
+  Hummer:
+    :commit: 8aa0dfa2e55b11454a0705d80ea7340a60ed4910
+    :git: "git@github.com:didi/Hummer.git"
+
+SPEC CHECKSUMS:
+  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
+  Hummer: 9c8a2da51f6db01191a05dc751fe9cc05ba8ea27
+  SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
+  Yoga: cff67a400f6b74dc38eb0bad4f156673d9aa980c
+
+PODFILE CHECKSUM: 6227cfdbd5ed265c018f61883c4b937dbb2e4de8
+
+COCOAPODS: 1.12.1

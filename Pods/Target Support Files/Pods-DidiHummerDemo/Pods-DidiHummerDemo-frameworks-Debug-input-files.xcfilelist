@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-DidiHummerDemo/Pods-DidiHummerDemo-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Hummer/Hummer.framework
+${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework
+${BUILT_PRODUCTS_DIR}/Yoga/yoga.framework
